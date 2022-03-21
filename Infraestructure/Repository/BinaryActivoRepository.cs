@@ -11,11 +11,11 @@ namespace Infraestructure.Repository
 {
     public class BinaryActivoRepository : IActivoModel
     {
-        private RAFContext context;
+        private RAFContext<string> context;
         private const int SIZE = 119;
         public BinaryActivoRepository()
         {
-            context = new RAFContext("activo", SIZE);
+            context = new RAFContext<string>("activo", SIZE);
         }
         public void Add(Activo t)
         {
