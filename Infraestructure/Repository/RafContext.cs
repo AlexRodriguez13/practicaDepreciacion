@@ -289,7 +289,7 @@ namespace Infraestructure.Repository
         public void Delete(int id)
         {
             long pos = 8 + (id - 1) * 4;
-            using(BinaryWriter bwHeader = new BinaryWriter(HeaderStream))
+            using (BinaryWriter bwHeader = new BinaryWriter(HeaderStream))
             {
                 bwHeader.BaseStream.Seek(pos, SeekOrigin.Begin);
                 bwHeader.Write(0);
