@@ -40,6 +40,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnsalir = new System.Windows.Forms.Button();
             this.btnupdate = new System.Windows.Forms.Button();
+            this.btndel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -150,12 +151,24 @@
             this.btnupdate.TabIndex = 11;
             this.btnupdate.Text = "Update";
             this.btnupdate.UseVisualStyleBackColor = true;
+            this.btnupdate.Click += new System.EventHandler(this.Btnupdate_Click);
+            // 
+            // btndel
+            // 
+            this.btndel.Location = new System.Drawing.Point(264, 317);
+            this.btndel.Name = "btndel";
+            this.btndel.Size = new System.Drawing.Size(75, 23);
+            this.btndel.TabIndex = 12;
+            this.btndel.Text = "Delete";
+            this.btndel.UseVisualStyleBackColor = true;
+            this.btndel.Click += new System.EventHandler(this.Btndel_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btndel);
             this.Controls.Add(this.btnupdate);
             this.Controls.Add(this.btnsalir);
             this.Controls.Add(this.dataGridView1);
@@ -191,6 +204,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnsalir;
         private System.Windows.Forms.Button btnupdate;
+        private System.Windows.Forms.Button btndel;
     }
 }
 

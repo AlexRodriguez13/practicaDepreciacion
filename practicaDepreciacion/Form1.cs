@@ -123,5 +123,42 @@ namespace practicaDepreciacion
         {
             this.Close();
         }
+
+        private void Btnupdate_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow.Selected == false)
+            {
+                MessageBox.Show("Debe seleccionar un activo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            FormUpdate frmupdate = new FormUpdate();
+            frmupdate.activoServices = activoServices;
+            frmupdate.lblId.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            frmupdate.txtNombre.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            frmupdate.nudValor.Value = decimal.Parse(dataGridView1.CurrentRow.Cells[2].Value.ToString());
+            frmupdate.nudValorResidual.Value = decimal.Parse(dataGridView1.CurrentRow.Cells[4].Value.ToString());
+            frmupdate.nudVidaUtil.Value = decimal.Parse(dataGridView1.CurrentRow.Cells[3].Value.ToString());
+
+            frmActualizar.ShowDialog();
+
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = activoServices.Read();
+        }
+
+        private void Btndel_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow.Selected == false)
+            {
+                MessageBox.Show("Debe seleccionar un activo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            //activoIds = activos.Select(x => x.Id).ToList();
+
+            activoServices.Delete((int)dataGridView1.CurrentRow.Cells[0].Value);
+
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = activoServices.Read();
+        }
+        }
     }
-}
+
