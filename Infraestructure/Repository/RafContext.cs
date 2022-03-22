@@ -295,5 +295,89 @@ namespace Infraestructure.Repository
                 bwHeader.Write(0);
             }
         }
+
+        public void Update<T>(T t, int id)
+        {
+            try
+            {
+                using (BinaryWriter bwHeader = new BinaryWriter(HeaderStream), bwData = new BinaryWriter(DataStream))
+                {
+
+                    int n = 0;
+                    int k = 0;
+                    using (BinaryReader brHeader = new BinaryReader(bwHeader.BaseStream))
+                    {
+                        if (brHeader.BaseStream.Length > 0)
+                        {
+                            brHeader.BaseStream.Seek(0, SeekOrigin.Begin);
+                            n = brHeader.ReadInt32();
+                            k = brHeader.ReadInt32();
+                        }
+
+                        long pos = (id - 1) * size;
+                        bwData.BaseStream.Seek(pos, SeekOrigin.Begin);
+
+                        PropertyInfo[] info = t.GetType().GetProperties();
+
+
+
+                        foreach (PropertyInfo pinfo in info)
+                        {
+                            Type type = pinfo.PropertyType;
+                            object ob = pinfo.GetValue(t, null);
+
+                            if (type.IsGenericType)
+                            {
+                                continue;
+                            }
+
+
+                            if (type == typeof(int))
+                            {
+                                bwData.Write((int)ob);
+                            }
+                            else if (type == typeof(long))
+                            {
+                                bwData.Write((long)ob);
+                            }
+                            else if (type == typeof(float))
+                            {
+                                bwData.Write((float)ob);
+                            }
+                            else if (type == typeof(double))
+                            {
+                                bwData.Write((double)ob);
+                            }
+                            else if (type == typeof(decimal))
+                            {
+                                bwData.Write((decimal)ob);
+                            }
+                            else if (type == typeof(char))
+                            {
+                                bwData.Write((char)ob);
+                            }
+                            else if (type == typeof(bool))
+                            {
+                                bwData.Write((bool)ob);
+                            }
+                            else if (type == typeof(string))
+                            {
+                                bwData.Write((string)ob);
+                            }
+                        }
+
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
+
+
+
     }
 }
