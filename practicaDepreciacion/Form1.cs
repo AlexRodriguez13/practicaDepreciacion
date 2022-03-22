@@ -118,5 +118,10 @@ namespace practicaDepreciacion
         {
             dataGridView1.DataSource = activoServices.Read();
         }
+
+        private void Btnsalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
