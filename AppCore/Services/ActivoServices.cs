@@ -30,7 +30,7 @@ namespace AppCore.Services
 
         public void Update(Activo activo, int id)
         {
-            throw new NotImplementedException();
+            activoModel.Update(activo, id);
         }
     }
 
