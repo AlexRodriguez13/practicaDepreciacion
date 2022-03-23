@@ -57,5 +57,17 @@ namespace Infraestructure.Repository
                 throw;
             }
         }
+
+        public void Update(Activo t, int g)
+        {
+            try
+            {
+                context.Update<Activo>(t, g);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

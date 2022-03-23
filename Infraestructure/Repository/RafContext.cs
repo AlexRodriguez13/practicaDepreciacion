@@ -331,7 +331,11 @@ namespace Infraestructure.Repository
                                 continue;
                             }
 
-
+                            if (pinfo.Name.Equals("Id", StringComparison.CurrentCultureIgnoreCase))
+                            {
+                                bwData.Write(id);
+                                continue;
+                            }
                             if (type == typeof(int))
                             {
                                 bwData.Write((int)ob);
