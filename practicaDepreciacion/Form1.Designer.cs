@@ -155,7 +155,7 @@
             // 
             // btndel
             // 
-            this.btndel.Location = new System.Drawing.Point(264, 317);
+            this.btndel.Location = new System.Drawing.Point(231, 317);
             this.btndel.Name = "btndel";
             this.btndel.Size = new System.Drawing.Size(75, 23);
             this.btndel.TabIndex = 12;
