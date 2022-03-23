@@ -33,9 +33,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtvalor = new System.Windows.Forms.TextBox();
+            this.txtVResidual = new System.Windows.Forms.TextBox();
+            this.txtVutil = new System.Windows.Forms.TextBox();
             this.btnsi = new System.Windows.Forms.Button();
             this.btncancel = new System.Windows.Forms.Button();
             this.lblId = new System.Windows.Forms.Label();
@@ -84,26 +84,26 @@
             this.txtNombre.Size = new System.Drawing.Size(100, 20);
             this.txtNombre.TabIndex = 10;
             // 
-            // textBox1
+            // txtvalor
             // 
-            this.textBox1.Location = new System.Drawing.Point(108, 65);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 11;
+            this.txtvalor.Location = new System.Drawing.Point(108, 65);
+            this.txtvalor.Name = "txtvalor";
+            this.txtvalor.Size = new System.Drawing.Size(100, 20);
+            this.txtvalor.TabIndex = 11;
             // 
-            // textBox2
+            // txtVResidual
             // 
-            this.textBox2.Location = new System.Drawing.Point(108, 97);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 12;
+            this.txtVResidual.Location = new System.Drawing.Point(108, 97);
+            this.txtVResidual.Name = "txtVResidual";
+            this.txtVResidual.Size = new System.Drawing.Size(100, 20);
+            this.txtVResidual.TabIndex = 12;
             // 
-            // textBox3
+            // txtVutil
             // 
-            this.textBox3.Location = new System.Drawing.Point(108, 132);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 13;
+            this.txtVutil.Location = new System.Drawing.Point(108, 132);
+            this.txtVutil.Name = "txtVutil";
+            this.txtVutil.Size = new System.Drawing.Size(100, 20);
+            this.txtVutil.TabIndex = 13;
             // 
             // btnsi
             // 
@@ -142,9 +142,9 @@
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.btncancel);
             this.Controls.Add(this.btnsi);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtVutil);
+            this.Controls.Add(this.txtVResidual);
+            this.Controls.Add(this.txtvalor);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -165,9 +165,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtvalor;
+        private System.Windows.Forms.TextBox txtVResidual;
+        private System.Windows.Forms.TextBox txtVutil;
         private System.Windows.Forms.Button btnsi;
         private System.Windows.Forms.Button btncancel;
         private System.Windows.Forms.Label lblId;
