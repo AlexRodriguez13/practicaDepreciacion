@@ -159,17 +159,16 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label Nombre;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.TextBox txtvalor;
-        private System.Windows.Forms.TextBox txtVResidual;
-        private System.Windows.Forms.TextBox txtVutil;
         private System.Windows.Forms.Button btnsi;
         private System.Windows.Forms.Button btncancel;
-        private System.Windows.Forms.Label lblId;
+        public System.Windows.Forms.Label Nombre;
+        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.Label label3;
+        public System.Windows.Forms.Label label4;
+        public System.Windows.Forms.TextBox txtNombre;
+        public System.Windows.Forms.TextBox txtvalor;
+        public System.Windows.Forms.TextBox txtVResidual;
+        public System.Windows.Forms.TextBox txtVutil;
+        public System.Windows.Forms.Label lblId;
     }
 }

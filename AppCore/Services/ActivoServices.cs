@@ -18,9 +18,19 @@ namespace AppCore.Services
             this.activoModel = model;
         }
 
+        public void Delete(int value)
+        {
+            throw new NotImplementedException();
+        }
+
         public Activo GetById(int id)
         {
             return activoModel.GetById(id);
+        }
+
+        public void Update(Activo activo, int id)
+        {
+            throw new NotImplementedException();
         }
     }
 

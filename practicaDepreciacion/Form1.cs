@@ -135,11 +135,11 @@ namespace practicaDepreciacion
             frmupdate.activoServices = activoServices;
             frmupdate.lblId.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
             frmupdate.txtNombre.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            frmupdate.nudValor.Value = decimal.Parse(dataGridView1.CurrentRow.Cells[2].Value.ToString());
-            frmupdate.nudValorResidual.Value = decimal.Parse(dataGridView1.CurrentRow.Cells[4].Value.ToString());
-            frmupdate.nudVidaUtil.Value = decimal.Parse(dataGridView1.CurrentRow.Cells[3].Value.ToString());
+            frmupdate.txtvalor.Text = /*float.Parse*/(dataGridView1.CurrentRow.Cells[2].Value.ToString());
+            frmupdate.txtVResidual.Text = /*decimal.Parse*/(dataGridView1.CurrentRow.Cells[4].Value.ToString());
+            frmupdate.txtVutil.Text = /*int.Parse*/(dataGridView1.CurrentRow.Cells[3].Value.ToString());
 
-            frmActualizar.ShowDialog();
+            frmupdate.ShowDialog();
 
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = activoServices.Read();
