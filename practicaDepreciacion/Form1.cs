@@ -154,8 +154,16 @@ namespace practicaDepreciacion
             }
             //activoIds = activos.Select(x => x.Id).ToList();
 
+            if (dataGridView1.CurrentRow.Cells[0].Value == null)
+            {
+                MessageBox.Show("No se encontro el archivo");
+                return;
+            }
             activoServices.Delete((int)dataGridView1.CurrentRow.Cells[0].Value);
-
+            
+            
+               
+            
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = activoServices.Read();
         }

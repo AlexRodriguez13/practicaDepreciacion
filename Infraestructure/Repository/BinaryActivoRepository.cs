@@ -29,9 +29,16 @@ namespace Infraestructure.Repository
             }
         }
 
-        public void Delete(Activo t)
+        public void Delete(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                context.Delete(id);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public Activo GetById(int id)

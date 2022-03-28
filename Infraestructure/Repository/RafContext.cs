@@ -288,6 +288,7 @@ namespace Infraestructure.Repository
         //TODO Add Update and Delete method
         public void Delete(int id)
         {
+            
             long pos = 8 + (id - 1) * 4;
             using (BinaryWriter bwHeader = new BinaryWriter(HeaderStream))
             {

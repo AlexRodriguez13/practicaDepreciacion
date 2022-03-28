@@ -10,7 +10,7 @@ namespace AppCore.IServices
    public interface IActivoServices: IServices<Activo>
     {
         Activo GetById(int id);
-        void Delete(int value);
+     
         void Update(Activo activo, int id);
     }
 }

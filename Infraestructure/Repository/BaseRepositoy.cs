@@ -19,9 +19,9 @@ namespace Infraestructure.Repository
             data.Add(t);
         }
 
-        public void Delete(T t)
+        public void Delete(int id)
         {
-            data.Remove(t);
+            throw new NotImplementedException();
         }
 
         public List<T> Read()

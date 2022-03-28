@@ -10,7 +10,7 @@ namespace AppCore.IServices
     {
 
         void Add(T t);
-        void Delete(T t);
+        void Delete(int id);
         List<T> Read();
     }
 }

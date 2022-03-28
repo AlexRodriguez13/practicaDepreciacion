@@ -18,10 +18,7 @@ namespace AppCore.Services
             this.activoModel = model;
         }
 
-        public void Delete(int value)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public Activo GetById(int id)
         {
