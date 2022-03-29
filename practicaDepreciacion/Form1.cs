@@ -167,6 +167,11 @@ namespace practicaDepreciacion
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = activoServices.Read();
         }
+
+        private void txtValorR_TextChanged(object sender, EventArgs e)
+        {
+
         }
+    }
     }
 

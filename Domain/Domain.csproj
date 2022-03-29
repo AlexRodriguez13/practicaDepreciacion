@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Activo.cs" />
+    <Compile Include="Entities\Empleado.cs" />
     <Compile Include="Enum\Depreciacion.cs" />
     <Compile Include="Interfaces\IActivoModel.cs" />
     <Compile Include="Interfaces\IDepreciacionModel.cs" />

@@ -41,12 +41,18 @@
             this.btnsalir = new System.Windows.Forms.Button();
             this.btnupdate = new System.Windows.Forms.Button();
             this.btndel = new System.Windows.Forms.Button();
+            this.lblcodigo = new System.Windows.Forms.Label();
+            this.cmbcodigo = new System.Windows.Forms.ComboBox();
+            this.lblempleado = new System.Windows.Forms.Label();
+            this.txtempleado = new System.Windows.Forms.TextBox();
+            this.txtestado = new System.Windows.Forms.TextBox();
+            this.lblestado = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtEnviar
             // 
-            this.txtEnviar.Location = new System.Drawing.Point(107, 255);
+            this.txtEnviar.Location = new System.Drawing.Point(713, 415);
             this.txtEnviar.Name = "txtEnviar";
             this.txtEnviar.Size = new System.Drawing.Size(75, 23);
             this.txtEnviar.TabIndex = 0;
@@ -58,7 +64,7 @@
             // 
             this.txtNombre.Location = new System.Drawing.Point(122, 43);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(100, 20);
+            this.txtNombre.Size = new System.Drawing.Size(121, 20);
             this.txtNombre.TabIndex = 1;
             this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             this.txtNombre.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtNombre_KeyUp);
@@ -67,7 +73,7 @@
             // 
             this.txtValor.Location = new System.Drawing.Point(122, 89);
             this.txtValor.Name = "txtValor";
-            this.txtValor.Size = new System.Drawing.Size(100, 20);
+            this.txtValor.Size = new System.Drawing.Size(121, 20);
             this.txtValor.TabIndex = 2;
             this.txtValor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValor_KeyPress_1);
             // 
@@ -75,15 +81,16 @@
             // 
             this.txtValorR.Location = new System.Drawing.Point(122, 136);
             this.txtValorR.Name = "txtValorR";
-            this.txtValorR.Size = new System.Drawing.Size(100, 20);
+            this.txtValorR.Size = new System.Drawing.Size(121, 20);
             this.txtValorR.TabIndex = 3;
+            this.txtValorR.TextChanged += new System.EventHandler(this.txtValorR_TextChanged);
             this.txtValorR.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValorR_KeyPress);
             // 
             // txtVidaU
             // 
             this.txtVidaU.Location = new System.Drawing.Point(122, 177);
             this.txtVidaU.Name = "txtVidaU";
-            this.txtVidaU.Size = new System.Drawing.Size(100, 20);
+            this.txtVidaU.Size = new System.Drawing.Size(121, 20);
             this.txtVidaU.TabIndex = 4;
             this.txtVidaU.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVidaU_KeyPress);
             // 
@@ -117,7 +124,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(45, 184);
+            this.label4.Location = new System.Drawing.Point(57, 184);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 13);
             this.label4.TabIndex = 8;
@@ -135,7 +142,7 @@
             // 
             // btnsalir
             // 
-            this.btnsalir.Location = new System.Drawing.Point(107, 374);
+            this.btnsalir.Location = new System.Drawing.Point(12, 415);
             this.btnsalir.Name = "btnsalir";
             this.btnsalir.Size = new System.Drawing.Size(75, 23);
             this.btnsalir.TabIndex = 10;
@@ -145,7 +152,7 @@
             // 
             // btnupdate
             // 
-            this.btnupdate.Location = new System.Drawing.Point(107, 317);
+            this.btnupdate.Location = new System.Drawing.Point(713, 386);
             this.btnupdate.Name = "btnupdate";
             this.btnupdate.Size = new System.Drawing.Size(75, 23);
             this.btnupdate.TabIndex = 11;
@@ -155,7 +162,7 @@
             // 
             // btndel
             // 
-            this.btndel.Location = new System.Drawing.Point(231, 317);
+            this.btndel.Location = new System.Drawing.Point(13, 386);
             this.btndel.Name = "btndel";
             this.btndel.Size = new System.Drawing.Size(75, 23);
             this.btndel.TabIndex = 12;
@@ -163,11 +170,66 @@
             this.btndel.UseVisualStyleBackColor = true;
             this.btndel.Click += new System.EventHandler(this.Btndel_Click);
             // 
+            // lblcodigo
+            // 
+            this.lblcodigo.AutoSize = true;
+            this.lblcodigo.Location = new System.Drawing.Point(57, 235);
+            this.lblcodigo.Name = "lblcodigo";
+            this.lblcodigo.Size = new System.Drawing.Size(40, 13);
+            this.lblcodigo.TabIndex = 13;
+            this.lblcodigo.Text = "Codigo";
+            // 
+            // cmbcodigo
+            // 
+            this.cmbcodigo.FormattingEnabled = true;
+            this.cmbcodigo.Location = new System.Drawing.Point(122, 227);
+            this.cmbcodigo.Name = "cmbcodigo";
+            this.cmbcodigo.Size = new System.Drawing.Size(121, 21);
+            this.cmbcodigo.TabIndex = 14;
+            // 
+            // lblempleado
+            // 
+            this.lblempleado.AutoSize = true;
+            this.lblempleado.Location = new System.Drawing.Point(61, 284);
+            this.lblempleado.Name = "lblempleado";
+            this.lblempleado.Size = new System.Drawing.Size(54, 13);
+            this.lblempleado.TabIndex = 15;
+            this.lblempleado.Text = "Empleado";
+            // 
+            // txtempleado
+            // 
+            this.txtempleado.Location = new System.Drawing.Point(122, 277);
+            this.txtempleado.Name = "txtempleado";
+            this.txtempleado.Size = new System.Drawing.Size(121, 20);
+            this.txtempleado.TabIndex = 16;
+            // 
+            // txtestado
+            // 
+            this.txtestado.Location = new System.Drawing.Point(122, 328);
+            this.txtestado.Name = "txtestado";
+            this.txtestado.Size = new System.Drawing.Size(121, 20);
+            this.txtestado.TabIndex = 17;
+            // 
+            // lblestado
+            // 
+            this.lblestado.AutoSize = true;
+            this.lblestado.Location = new System.Drawing.Point(61, 335);
+            this.lblestado.Name = "lblestado";
+            this.lblestado.Size = new System.Drawing.Size(40, 13);
+            this.lblestado.TabIndex = 18;
+            this.lblestado.Text = "Estado";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblestado);
+            this.Controls.Add(this.txtestado);
+            this.Controls.Add(this.txtempleado);
+            this.Controls.Add(this.lblempleado);
+            this.Controls.Add(this.cmbcodigo);
+            this.Controls.Add(this.lblcodigo);
             this.Controls.Add(this.btndel);
             this.Controls.Add(this.btnupdate);
             this.Controls.Add(this.btnsalir);
@@ -205,6 +267,12 @@
         private System.Windows.Forms.Button btnupdate;
         private System.Windows.Forms.Button btndel;
         public System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label lblcodigo;
+        private System.Windows.Forms.ComboBox cmbcodigo;
+        private System.Windows.Forms.Label lblempleado;
+        private System.Windows.Forms.TextBox txtempleado;
+        private System.Windows.Forms.TextBox txtestado;
+        private System.Windows.Forms.Label lblestado;
     }
 }
 
