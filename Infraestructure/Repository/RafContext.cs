@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Infraestructure.Repository
 {
-    public class RAFContext<T>
+    public class RAFContext
     {
         private string fileName;
         private int size;
@@ -381,8 +381,34 @@ namespace Infraestructure.Repository
             }
         }
 
+        public int GetLastId()
+        {
+            int k = 0;
 
+            try
+            {
+                using (BinaryReader brheader = new BinaryReader(HeaderStream))
+                {
+                    if (brheader.BaseStream.Length == 0)
+                    {
+                        return k;
+                    }
 
+                    long posh = 4;
+                    brheader.BaseStream.Seek(posh, SeekOrigin.Begin);
+
+                    k = brheader.ReadInt32();
+                }
+            }
+
+            catch (IOException)
+            {
+                throw;
+            }
+
+            return k;
+        }
+        
 
 
     }
