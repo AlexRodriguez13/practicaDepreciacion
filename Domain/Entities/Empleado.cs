@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-   public class Empleado
+    public class Empleado
     {
         public int Id { get; set; }
         public String Cedula { get; set; }
@@ -17,6 +17,8 @@ namespace Domain.Entities
         public int Telefono { get; set; }
         public string Email { get; set; }
         public EstadoEmpleado Estado { get; set; }
+
+        
 
 
 
