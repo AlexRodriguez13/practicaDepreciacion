@@ -9,16 +9,14 @@ namespace Domain.Entities
 {
     public class Empleado
     {
-        public int Id { get; set; }
-        public String Cedula { get; set; }
-        public String Nombre { get; set; }
+        //public int Id { get; set; }
+        public string Cedula { get; set; }
+        public string Nombre { get; set; }
         public string Apellido { get; set; }
-        
         public int Telefono { get; set; }
         public string Email { get; set; }
         public EstadoEmpleado Estado { get; set; }
-
-        public List <Activo> Activos { get; set; }
+        public List<Activo> Activos { get; set; }
 
         
 

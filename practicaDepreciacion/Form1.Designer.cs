@@ -41,10 +41,6 @@
             this.btnsalir = new System.Windows.Forms.Button();
             this.btnupdate = new System.Windows.Forms.Button();
             this.btndel = new System.Windows.Forms.Button();
-            this.lblcodigo = new System.Windows.Forms.Label();
-            this.cmbcodigo = new System.Windows.Forms.ComboBox();
-            this.lblempleado = new System.Windows.Forms.Label();
-            this.txtempleado = new System.Windows.Forms.TextBox();
             this.txtestado = new System.Windows.Forms.TextBox();
             this.lblestado = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -170,42 +166,9 @@
             this.btndel.UseVisualStyleBackColor = true;
             this.btndel.Click += new System.EventHandler(this.Btndel_Click);
             // 
-            // lblcodigo
-            // 
-            this.lblcodigo.AutoSize = true;
-            this.lblcodigo.Location = new System.Drawing.Point(57, 235);
-            this.lblcodigo.Name = "lblcodigo";
-            this.lblcodigo.Size = new System.Drawing.Size(40, 13);
-            this.lblcodigo.TabIndex = 13;
-            this.lblcodigo.Text = "Codigo";
-            // 
-            // cmbcodigo
-            // 
-            this.cmbcodigo.FormattingEnabled = true;
-            this.cmbcodigo.Location = new System.Drawing.Point(122, 227);
-            this.cmbcodigo.Name = "cmbcodigo";
-            this.cmbcodigo.Size = new System.Drawing.Size(121, 21);
-            this.cmbcodigo.TabIndex = 14;
-            // 
-            // lblempleado
-            // 
-            this.lblempleado.AutoSize = true;
-            this.lblempleado.Location = new System.Drawing.Point(61, 284);
-            this.lblempleado.Name = "lblempleado";
-            this.lblempleado.Size = new System.Drawing.Size(54, 13);
-            this.lblempleado.TabIndex = 15;
-            this.lblempleado.Text = "Empleado";
-            // 
-            // txtempleado
-            // 
-            this.txtempleado.Location = new System.Drawing.Point(122, 277);
-            this.txtempleado.Name = "txtempleado";
-            this.txtempleado.Size = new System.Drawing.Size(121, 20);
-            this.txtempleado.TabIndex = 16;
-            // 
             // txtestado
             // 
-            this.txtestado.Location = new System.Drawing.Point(122, 328);
+            this.txtestado.Location = new System.Drawing.Point(122, 237);
             this.txtestado.Name = "txtestado";
             this.txtestado.Size = new System.Drawing.Size(121, 20);
             this.txtestado.TabIndex = 17;
@@ -213,7 +176,7 @@
             // lblestado
             // 
             this.lblestado.AutoSize = true;
-            this.lblestado.Location = new System.Drawing.Point(61, 335);
+            this.lblestado.Location = new System.Drawing.Point(61, 244);
             this.lblestado.Name = "lblestado";
             this.lblestado.Size = new System.Drawing.Size(40, 13);
             this.lblestado.TabIndex = 18;
@@ -226,10 +189,6 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.lblestado);
             this.Controls.Add(this.txtestado);
-            this.Controls.Add(this.txtempleado);
-            this.Controls.Add(this.lblempleado);
-            this.Controls.Add(this.cmbcodigo);
-            this.Controls.Add(this.lblcodigo);
             this.Controls.Add(this.btndel);
             this.Controls.Add(this.btnupdate);
             this.Controls.Add(this.btnsalir);
@@ -267,10 +226,6 @@
         private System.Windows.Forms.Button btnupdate;
         private System.Windows.Forms.Button btndel;
         public System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label lblcodigo;
-        private System.Windows.Forms.ComboBox cmbcodigo;
-        private System.Windows.Forms.Label lblempleado;
-        private System.Windows.Forms.TextBox txtempleado;
         private System.Windows.Forms.TextBox txtestado;
         private System.Windows.Forms.Label lblestado;
     }
