@@ -9,8 +9,8 @@ namespace Domain.Entities
     public class DetalleActivoEmpleado
     {
         public int Id { get; set; }
-        public int Activo { get; set; }
-
+        public Activo Activo { get; set; }
+        public Empleado Empleado { get; set; }
         public DateTime Fecha { get; set; }
         public bool Estado { get; set; }
 
