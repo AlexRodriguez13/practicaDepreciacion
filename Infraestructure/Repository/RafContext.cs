@@ -127,6 +127,75 @@ namespace Infraestructure.Repository
             
         }
 
+        private void WriteObject(object t, BinaryWriter bwData)
+        {
+            if (t == null)
+            {
+                return;
+            }
+            PropertyInfo[] infoClass = t.GetType().GetProperties();
+            foreach (PropertyInfo pinfoclass in infoClass)
+            {
+                Type typeOne = pinfoclass.PropertyType;
+                object obj = pinfoclass.GetValue(t, null);
+                if (!typeOne.IsPrimitive && typeOne.IsClass && typeOne != Type.GetType("System.String"))
+                {
+                    WriteObject(obj, bwData);
+                }
+                if (typeOne.IsGenericType)
+                {
+                    continue;
+                }
+                if (typeOne == typeof(int))
+                {
+                    bwData.Write((int)obj);
+                    continue;
+                }
+                else if (typeOne == typeof(long))
+                {
+                    bwData.Write((long)obj);
+                    continue;
+                }
+                else if (typeOne == typeof(float))
+                {
+                    bwData.Write((float)obj);
+                    continue;
+                }
+                else if (typeOne == typeof(double))
+                {
+                    bwData.Write((double)obj);
+                    continue;
+                }
+                else if (typeOne == typeof(decimal))
+                {
+                    bwData.Write((decimal)obj);
+                    continue;
+                }
+                else if (typeOne == typeof(char))
+                {
+                    bwData.Write((char)obj);
+                    continue;
+                }
+                else if (typeOne == typeof(bool))
+                {
+                    bwData.Write((bool)obj);
+                    continue;
+                }
+                else if (typeOne == typeof(string))
+                {
+                    bwData.Write((string)obj);
+                    continue;
+                }
+                if (typeOne.IsEnum)
+                {
+                    bwData.Write((int)obj);
+                    continue;
+                }
+            }
+        }
+
+
+
         public T Get<T>(int id)
         {
             try
@@ -204,6 +273,84 @@ namespace Infraestructure.Repository
             }            
 
         }
+
+        private object GetObject(object t, BinaryReader brData)
+        {
+            if (t == null)
+            {
+                return null;
+            }
+            object Object = Activator.CreateInstance(t.GetType());
+            PropertyInfo[] infoClass = t.GetType().GetProperties();
+            foreach (PropertyInfo pInfoClass in infoClass)
+            {
+                Type type = pInfoClass.PropertyType;
+
+                if (!type.IsPrimitive && type.IsClass && type != Type.GetType("System.String"))
+                {
+
+                    object j = pInfoClass.GetValue(t, null);
+                    pInfoClass.SetValue(Object, GetObject(j, brData));
+                }
+
+                if (type.IsGenericType)
+                {
+                    continue;
+                }
+
+                if (type == typeof(int))
+                {
+                    pInfoClass.SetValue(Object, brData.GetValue<int>(TypeCode.Int32));
+                    continue;
+                }
+                else if (type == typeof(long))
+                {
+                    pInfoClass.SetValue(Object, brData.GetValue<long>(TypeCode.Int64));
+                    continue;
+                }
+                else if (type == typeof(float))
+                {
+                    pInfoClass.SetValue(Object, brData.GetValue<float>(TypeCode.Single));
+                    continue;
+                }
+                else if (type == typeof(double))
+                {
+                    pInfoClass.SetValue(Object, brData.GetValue<double>(TypeCode.Double));
+                    continue;
+                }
+                else if (type == typeof(UInt64))
+                {
+                    pInfoClass.SetValue(Object, brData.GetValue<UInt64>(TypeCode.UInt64));
+                }
+                else if (type == typeof(decimal))
+                {
+                    pInfoClass.SetValue(Object, brData.GetValue<decimal>(TypeCode.Decimal));
+                    continue;
+                }
+                else if (type == typeof(char))
+                {
+                    pInfoClass.SetValue(Object, brData.GetValue<char>(TypeCode.Char));
+                    continue;
+                }
+                else if (type == typeof(bool))
+                {
+                    pInfoClass.SetValue(Object, brData.GetValue<bool>(TypeCode.Boolean));
+                    continue;
+                }
+                else if (type == typeof(string))
+                {
+                    pInfoClass.SetValue(Object, brData.GetValue<string>(TypeCode.String));
+                    continue;
+                }
+                else if (type.IsEnum)
+                {
+                    pInfoClass.SetValue(Object, brData.GetValue<int>(TypeCode.Int32));
+                }
+
+            }
+            return Object;
+        }
+
 
         public List<T> GetAll<T>()
         {
