@@ -74,6 +74,7 @@
     <Compile Include="Repository\BinaryActivoRepository.cs" />
     <Compile Include="Repository\BinaryEmpleadoRepository.cs" />
     <Compile Include="Repository\BinaryReaderExtension.cs" />
+    <Compile Include="Repository\BinaryRegistrosRepository.cs" />
     <Compile Include="Repository\JsonActivoRepository.cs" />
     <Compile Include="Repository\ListActivoRepository.cs" />
     <Compile Include="Repository\RafContext.cs" />
