@@ -446,7 +446,7 @@ namespace Infraestructure.Repository
             }
         }
 
-        public void Update<T>(T t, int id)
+        public void Update<T>(T t)
         {
            int Id = int.Parse(t
                 .GetType().GetProperty("Id").GetValue(t).ToString());
