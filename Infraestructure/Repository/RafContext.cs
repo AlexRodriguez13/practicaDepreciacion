@@ -435,15 +435,54 @@ namespace Infraestructure.Repository
         }
 
         //TODO Add Update and Delete method
-        public void Delete(int id)
+        public bool Delete(int id)
         {
-            
-            long pos = 8 + (id - 1) * 4;
-            using (BinaryWriter bwHeader = new BinaryWriter(HeaderStream))
+            using (BinaryReader brHeader = new BinaryReader(HeaderStream))
             {
-                bwHeader.BaseStream.Seek(pos, SeekOrigin.Begin);
-                bwHeader.Write(0);
+                int n, k;
+                brHeader.BaseStream.Seek(0, SeekOrigin.Begin);
+                if (brHeader.BaseStream.Length == 0)
+                {
+                    n = 0;
+                    k = 0;
+                    return false;
+                }
+                n = brHeader.ReadInt32();
+                k = brHeader.ReadInt32();
+                if (id <= 0 || id > k)
+                {
+                    return false;
+                }
+                long positionInitial = 8 + (id - 1) * 4;
+                long positionFinal = 8 + (id * 4);
+                using (BinaryWriter brHeaderTemp = new BinaryWriter(File.Open("Temp.txt", FileMode.Create, FileAccess.ReadWrite)))
+                {
+                    long length = brHeader.BaseStream.Length;
+                    brHeader.BaseStream.Seek(0, SeekOrigin.Begin);
+                    while (brHeader.BaseStream.Position < length)
+                    {
+
+                        if (brHeader.BaseStream.Position == positionInitial)
+                        {
+                            brHeaderTemp.Write(-1);
+                            brHeader.BaseStream.Position = brHeader.BaseStream.Position + 4;
+                        }
+                        else
+                        {
+                            brHeaderTemp.Write(brHeader.ReadInt32());
+                        }
+
+                    }
+                    brHeaderTemp.BaseStream.Seek(0, SeekOrigin.Begin);
+                    brHeaderTemp.Write(n);
+                    brHeaderTemp.Write(k);
+
+                }
             }
+            File.Delete($"{fileName}.hd");
+            File.Copy("Temp.txt", $"{fileName}.hd");
+            return true;
+
         }
 
         public void Update<T>(T t)
