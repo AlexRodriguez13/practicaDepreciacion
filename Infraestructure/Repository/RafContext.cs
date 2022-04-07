@@ -18,6 +18,8 @@ namespace Infraestructure.Repository
         private const string directoryName = "DATA";
         private string DirectoryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), directoryName);
 
+       
+
         public RAFContext(string fileName, int size)
         {
             this.fileName = fileName;
@@ -446,85 +448,108 @@ namespace Infraestructure.Repository
 
         public void Update<T>(T t, int id)
         {
-            try
+           int Id = int.Parse(t
+                .GetType().GetProperty("Id").GetValue(t).ToString());
+
+            using (BinaryReader brHeader = new BinaryReader(HeaderStream),
+                                brData = new BinaryReader(DataStream))
             {
-                using (BinaryWriter bwHeader = new BinaryWriter(HeaderStream), bwData = new BinaryWriter(DataStream))
+                int n, k;
+                brHeader.BaseStream.Seek(0, SeekOrigin.Begin);
+                if (brHeader.BaseStream.Length == 0)
                 {
+                    n = 0;
+                    k = 0;
+                    return;
+                }
+                n = brHeader.ReadInt32();
+                k = brHeader.ReadInt32();
 
-                    int n = 0;
-                    int k = 0;
-                    using (BinaryReader brHeader = new BinaryReader(bwHeader.BaseStream))
+                long posh = 8 + (Id - 1) * 4;
+                brHeader.BaseStream.Seek(posh, SeekOrigin.Begin);
+                long index = brHeader.ReadInt32();
+                long posd = (index - 1) * size;
+                brData.Close();
+                brHeader.Close();
+                using (BinaryWriter binaryHeader = new BinaryWriter(HeaderStream),
+                                   binaryData = new BinaryWriter(DataStream))
+                {
+                    PropertyInfo[] propertyInfo = t.GetType().GetProperties();
+
+
+
+                    binaryData.BaseStream.Seek(posd, SeekOrigin.Begin);
+                    foreach (PropertyInfo pinfo in propertyInfo)
                     {
-                        if (brHeader.BaseStream.Length > 0)
+                        Type type = pinfo.PropertyType;
+                        object obj = pinfo.GetValue(t, null);
+                        if (!type.IsPrimitive && type.IsClass && type != Type.GetType("System.String"))
                         {
-                            brHeader.BaseStream.Seek(0, SeekOrigin.Begin);
-                            n = brHeader.ReadInt32();
-                            k = brHeader.ReadInt32();
+
+                            PropertyInfo[] infoClass = obj.GetType().GetProperties();
+                            object objectClass = Activator.CreateInstance(obj.GetType());
+                            foreach (PropertyInfo PInfoClass in infoClass)
+                            {
+                                if (PInfoClass.Name.Equals("Id", StringComparison.CurrentCultureIgnoreCase))
+                                {
+                                    binaryData.Write((int)PInfoClass.GetValue(obj));
+                                    break;
+                                }
+                               
+                            }
+                            continue;
+                            //WriteObject(obj, binaryData);
                         }
-
-                        long pos = (id - 1) * size;
-                        bwData.BaseStream.Seek(pos, SeekOrigin.Begin);
-
-                        PropertyInfo[] info = t.GetType().GetProperties();
-
-
-
-                        foreach (PropertyInfo pinfo in info)
+                        if (type.IsGenericType)
                         {
-                            Type type = pinfo.PropertyType;
-                            object ob = pinfo.GetValue(t, null);
-
-                            if (type.IsGenericType)
-                            {
-                                continue;
-                            }
-
-                            if (pinfo.Name.Equals("Id", StringComparison.CurrentCultureIgnoreCase))
-                            {
-                                bwData.Write(id);
-                                continue;
-                            }
-                            if (type == typeof(int))
-                            {
-                                bwData.Write((int)ob);
-                            }
-                            else if (type == typeof(long))
-                            {
-                                bwData.Write((long)ob);
-                            }
-                            else if (type == typeof(float))
-                            {
-                                bwData.Write((float)ob);
-                            }
-                            else if (type == typeof(double))
-                            {
-                                bwData.Write((double)ob);
-                            }
-                            else if (type == typeof(decimal))
-                            {
-                                bwData.Write((decimal)ob);
-                            }
-                            else if (type == typeof(char))
-                            {
-                                bwData.Write((char)ob);
-                            }
-                            else if (type == typeof(bool))
-                            {
-                                bwData.Write((bool)ob);
-                            }
-                            else if (type == typeof(string))
-                            {
-                                bwData.Write((string)ob);
-                            }
+                            continue;
                         }
-
-
+                        if (type == typeof(int))
+                        {
+                            binaryData.Write((int)obj);
+                            continue;
+                        }
+                        else if (type == typeof(long))
+                        {
+                            binaryData.Write((long)obj);
+                            continue;
+                        }
+                        else if (type == typeof(float))
+                        {
+                            binaryData.Write((float)obj);
+                            continue;
+                        }
+                        else if (type == typeof(double))
+                        {
+                            binaryData.Write((double)obj);
+                            continue;
+                        }
+                        else if (type == typeof(decimal))
+                        {
+                            binaryData.Write((decimal)obj);
+                            continue;
+                        }
+                        else if (type == typeof(char))
+                        {
+                            binaryData.Write((char)obj);
+                            continue;
+                        }
+                        else if (type == typeof(bool))
+                        {
+                            binaryData.Write((bool)obj);
+                            continue;
+                        }
+                        else if (type == typeof(string))
+                        {
+                            binaryData.Write((string)obj);
+                            continue;
+                        }
+                        else if (type.IsEnum)
+                        {
+                            binaryData.Write((int)obj);
+                        }
                     }
                 }
-            }
-            catch (Exception)
-            {
-                throw;
             }
         }
 
