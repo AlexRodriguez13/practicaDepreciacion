@@ -10,5 +10,6 @@ namespace Domain.Interfaces
     public interface IEmpleadoModel: IModel<Empleado>
     {
         Empleado GetById(int id);
+        void Update(Empleado Empleado);
     }
 }
